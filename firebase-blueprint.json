@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "User profile collection storing account info and optional personal health profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "name": { "type": "string", "description": "Full name" },
+        "email": { "type": "string", "description": "Email address" },
+        "role": { "type": "string", "description": "User role: user or admin" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "ISO timestamp of account creation" },
+        "healthProfile": {
+          "type": "object",
+          "description": "Personal health profile containing biometrics, preferences, and dietary restrictions"
+        }
+      },
+      "required": ["uid", "name", "email", "createdAt"]
+    },
+    "app_config": {
+      "title": "App Configuration & Demo Data",
+      "description": "Application level configuration and canonical public demo profile/plan",
+      "type": "object",
+      "properties": {
+        "configId": { "type": "string", "description": "Configuration identifier (e.g. demo_profile, demo_meal_plan)" },
+        "data": { "type": "object", "description": "Canonical demo profile or meal plan data payload" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "ISO timestamp of update" },
+        "updatedBy": { "type": "string", "description": "Admin UID who published the demo update" }
+      },
+      "required": ["configId", "data", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User document mapped by Auth UID"
+    },
+    "/app_config/{configId}": {
+      "schema": "app_config",
+      "description": "Public read-only application configuration and canonical demo profile editable only by admins"
+    }
+  }
+}

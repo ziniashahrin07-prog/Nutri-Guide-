@@ -1,0 +1,6 @@
+{
+  "name": "Nutri Guide",
+  "description": "AI-assisted personal nutrition and healthy meal planning tailored for Bangladesh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
