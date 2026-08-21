@@ -1,4 +1,4 @@
-import { createExpressApp } from '../src/server/app';
+import { createExpressApp } from './app';
 
 const app = createExpressApp();
 
